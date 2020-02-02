@@ -52,9 +52,14 @@ namespace Payroll
             }
         }
 
+        /// <summary>
+        /// Returns a string representation of the <see cref="Worker"/>
+        /// instance's current state.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            string workerString = name + " " + Convert.ToString(id) + " " + Convert.ToString(payRate);
+            string workerString = $"{name.ToString()} {id.ToString()} {payRate.ToString()}";
             return workerString;
         }
     }

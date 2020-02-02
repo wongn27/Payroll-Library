@@ -12,7 +12,7 @@ namespace Payroll
         {
             workerID = string.Empty;
             hoursWorked = 0D;
-            date = DateTime.Today;
+            date = DateTime.Now;
         }
 
         public string WorkerID
@@ -53,7 +53,7 @@ namespace Payroll
 
         public override string ToString()
         {
-            string shiftString = workerID + " " + Convert.ToString(hoursWorked) + " " + Convert.ToString(date);
+            string shiftString = $"{workerID.ToString()} {hoursWorked.ToString()} {date.ToString()}";
             return shiftString;
         }
     }
