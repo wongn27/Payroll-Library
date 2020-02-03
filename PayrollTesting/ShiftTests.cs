@@ -38,8 +38,13 @@ namespace PayrollTesting
         [TestMethod]
         public void TestDate()
         {
-            DateTime expected = 
-        
+            int day = 17, month = 1, year = 2020;
+
+            DateTime expected = new DateTime(2020,1,17);
+
+            DateTime actual =  new DateTime(year, month, day);
+
+            Assert.AreEqual(expected, actual, "Values are not equal");        
         }
     }
 }
