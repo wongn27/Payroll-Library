@@ -1,20 +1,34 @@
-﻿using System;
+﻿//******************************************************
+// File: Worker.cs
+//
+// Purpose: Contains the class definition for Worker.
+//          Worker has a default constructor that 
+//          will set the values of each member 
+//          variable to a default value, contains 
+//          properties for each member variable,
+//          and contains a method that returns a 
+//          string that contains descriptive text 
+//          and data for all member variables.
+//
+// Written By: Natalie Wong
+//
+// Compiler: Visual Studio 2019
+//
+//******************************************************
+
+using System;
 
 namespace Payroll
 {
     public class Worker
     {
+        #region Member Variables
         private string name;
         private int id;
         private double payRate;
+        #endregion
 
-        public Worker()
-        {
-            name = string.Empty;
-            id = 0;
-            payRate = 0D;
-        }
-
+        #region Properties
         public string Name
         {
             get
@@ -51,6 +65,20 @@ namespace Payroll
                 payRate = value;
             }
         }
+        #endregion
+
+        #region Methods
+        //***********************************************************************************************
+        // Method: Worker
+        //
+        // Purpose: Default constructor. Sets the values of each member variable to a default value.
+        //***********************************************************************************************
+        public Worker()
+        {
+            name = string.Empty;
+            id = 0;
+            payRate = 0D;
+        }
 
         /// <summary>
         /// Returns a string representation of the <see cref="Worker"/>
@@ -62,5 +90,6 @@ namespace Payroll
             string workerString = $"{name.ToString()} {id.ToString()} {payRate.ToString()}";
             return workerString;
         }
+        #endregion
     }
 }
