@@ -17,9 +17,13 @@
 //******************************************************
 
 using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace Payroll
 {
+    [DataContract]
     public class Worker
     {
         #region Member Variables
@@ -29,6 +33,7 @@ namespace Payroll
         #endregion
 
         #region Properties
+        [DataMember(Name ="name")]
         public string Name
         {
             get
@@ -41,6 +46,7 @@ namespace Payroll
             }
         }
 
+        [DataMember(Name = "id")]
         public int Id
         {
             get
@@ -54,6 +60,7 @@ namespace Payroll
 
         }
 
+        [DataMember(Name = "payrate")]
         public double PayRate
         {
             get

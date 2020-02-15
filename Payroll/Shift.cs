@@ -17,9 +17,11 @@
 //******************************************************
 
 using System;
+using System.Runtime.Serialization;
 
 namespace Payroll
 {
+    [DataContract]
     public class Shift
     {
         #region Member Variables
@@ -29,6 +31,7 @@ namespace Payroll
         #endregion
 
         #region Properties
+        [DataMember(Name = "workid")]
         public string WorkerID
         {
             get
@@ -41,6 +44,7 @@ namespace Payroll
             }
         }
 
+        [DataMember(Name = "hoursworked")]
         public double HoursWorked
         {
             get
@@ -53,6 +57,7 @@ namespace Payroll
             }
         }
 
+        [DataMember(Name = "date")]
         public DateTime Date
         {
             get
