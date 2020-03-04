@@ -1,81 +1,84 @@
-﻿using System;
+﻿//******************************************************
+// File: Department.cs
+//
+// Purpose: Contains the class definition for Department.
+//          Department has a default constructor that 
+//          will set the values of each member 
+//          variable to a default value, contains 
+//          properties for each member variable,
+//          contains a method to find a worker,
+//          contains a method to calculate pay,
+//          and contains a method that returns a 
+//          string that contains descriptive text 
+//          and data for all member variables.
+//
+// Written By: Natalie Wong
+//
+// Compiler: Visual Studio 2019
+//
+//******************************************************
+
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Payroll
 {
+    [DataContract]
     public class Department
     {
-        private string name;
-        private List<Worker> workers;
-        private List<Shift> shifts;
+        [DataMember(Name = "name")]
+        private string Name { get; set; }
 
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
-        }
+        [DataMember(Name = "workers")]
+        private List<Worker> Workers { get; set; }
 
-        public List<Worker> Workers
-        {
-            get
-            {
-                return workers;
-            }
-            set
-            {
-                workers = value;
-            }
-        }
-
-        public List<Shift> Shifts
-        {
-            get
-            {
-                return shifts;
-            }
-            set
-            {
-                shifts = value;
-            }
-        }
+        [DataMember(Name = "shifts")]
+        private List<Shift> Shifts { get; set; }
 
         public Department() 
         {
-            name = string.Empty;
-            workers = 
-            shifts = 
+            Name = string.Empty;
+            Workers = new List<Worker>();
+            Shifts = new List<Shift>();
         }
 
-        public Worker FindWorker (int workerId)
-        {
-            if (workers.Contains(workerId))
-            {
-                Worker result = workers.Find(x => x.Id == workerId);
-                return result;
-            }
-            else
-            {
-                return null;
-            }
-        }
+        //public Worker FindWorker (int workerId)
+        //{
+        //    if (Workers.Contains(workerId))
+        //    {
+        //        Worker result = Workers.Find(x => x.Id == workerId);
+        //        return result;
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
 
-        public double CalculatePay (int workerId)
-        {
-            if (workers.Contains(workerId) {
+        //public double CalculatePay (int workerId)
+        //{
+        //    if (Workers.Contains(workerId) {
 
-            }
-        }
+        //    }
+        //}
 
         public override string ToString()
         {
-            string departmentString = $"{name.ToString()} {workers.ToString()} {shifts.ToString()}";
+            string departmentString = "";
+            departmentString += Name + "\n";
+
+            for (int i = 0; i < Workers.Count; i++)
+            {
+                departmentString += Workers[i].ToString() + "\n";
+            }
+
+            for (int i = 0; i < Shifts.Count; i++)
+            {
+                departmentString += Shifts[i].ToString() + "\n";
+            }
+
             return departmentString;
         }
     }
