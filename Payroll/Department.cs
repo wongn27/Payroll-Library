@@ -29,13 +29,13 @@ namespace Payroll
     public class Department
     {
         [DataMember(Name = "name")]
-        private string Name { get; set; }
+        public string Name { get; set; }
 
         [DataMember(Name = "workers")]
-        private List<Worker> Workers { get; set; }
+        public List<Worker> Workers { get; set; }
 
         [DataMember(Name = "shifts")]
-        private List<Shift> Shifts { get; set; }
+        public List<Shift> Shifts { get; set; }
 
         public Department() 
         {
