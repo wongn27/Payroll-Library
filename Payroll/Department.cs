@@ -37,32 +37,49 @@ namespace Payroll
         [DataMember(Name = "shifts")]
         public List<Shift> Shifts { get; set; }
 
-        public Department() 
+        public Department()
         {
             Name = string.Empty;
             Workers = new List<Worker>();
             Shifts = new List<Shift>();
         }
 
-        //public Worker FindWorker (int workerId)
-        //{
-        //    if (Workers.Contains(workerId))
-        //    {
-        //        Worker result = Workers.Find(x => x.Id == workerId);
-        //        return result;
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
+        public Worker FindWorker(int workerId)
+        {
+            for (int i = 0; i < Workers.Count; i++)
+            {
+                if (Workers[i].Id == workerId)
+                {
+                    //Worker result = Workers.Find(x => x.Id == workerId);
+                    //string workerData = Workers[i].ToString();
+                    return Workers[i];
+                }
+            }
 
-        //public double CalculatePay (int workerId)
-        //{
-        //    if (Workers.Contains(workerId) {
+            return null;
+        }
 
-        //    }
-        //}
+        public double CalculatePay(int workerId)
+        {
+            double totalPay = 0.0;
+            double totalHours = 0.0;
+
+           Worker worker = FindWorker(workerId);
+
+            int index;
+            for (index = 0; index < Shifts.Count; index++)
+            {
+                if (Shifts[index].WorkerID == workerId)
+                {
+                    totalHours += Shifts[index].HoursWorked;
+
+                }
+            }
+            
+            totalPay = worker.PayRate * totalHours;
+
+            return totalPay;
+        }
 
         public override string ToString()
         {
