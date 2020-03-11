@@ -25,14 +25,14 @@ namespace Payroll
     public class Shift
     {
         #region Member Variables
-        private string workerID;
+        private int workerID;
         private double hoursWorked;
         private DateTime date;
         #endregion
 
         #region Properties
         [DataMember(Name = "workid")]
-        public string WorkerID
+        public int WorkerID
         {
             get
             {
@@ -79,7 +79,7 @@ namespace Payroll
         //***********************************************************************************************
         public Shift()
         {
-            workerID = string.Empty;
+            workerID = 0;
             hoursWorked = 0D;
             date = DateTime.Now;
         }
