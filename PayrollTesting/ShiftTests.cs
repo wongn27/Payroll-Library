@@ -69,11 +69,11 @@ namespace PayrollTesting
         {
             int day = 17, month = 1, year = 2020;
 
-            var expected = new DateTime(2020,1,17);
+            var expected = new DateTime(2020, 1, 17);
 
-            var actual =  new DateTime(year, month, day);
+            var actual = new DateTime(year, month, day);
 
-            Assert.AreEqual(expected, actual, "Values are not equal");        
+            Assert.AreEqual(expected, actual, "Values are not equal");
         }
         #endregion
     }

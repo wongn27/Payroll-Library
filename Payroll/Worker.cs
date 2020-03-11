@@ -33,7 +33,7 @@ namespace Payroll
         #endregion
 
         #region Properties
-        [DataMember(Name ="name")]
+        [DataMember(Name = "name")]
         public string Name
         {
             get
