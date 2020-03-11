@@ -1,4 +1,17 @@
-﻿using System;
+﻿//******************************************************
+// File: DepartmentTests.cs
+//
+// Purpose: Contains the class definition for DepartmentTests.
+//          DepartmentTests tests each member variable
+//          to make sure the results are correct.
+//
+// Written By: Natalie Wong
+//
+// Compiler: Visual Studio 2019
+//
+//******************************************************
+
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Payroll;
 using System.Runtime.Serialization.Json;
@@ -9,7 +22,10 @@ namespace PayrollTesting
     [TestClass]
     public class DepartmentTests
     {
-
+        #region Test Methods
+        /// <summary>
+        /// Should pass a VALID ID into Find and it should return a worker instance with the target id.
+        /// </summary>
         [TestMethod]
         public void TestFindWithGoodId()
         {
@@ -27,6 +43,9 @@ namespace PayrollTesting
             Assert.AreEqual(expected, actual, "Values are not equal");
         }
 
+        /// <summary>
+        /// Should pass an INVALID ID into Find and it should return null.
+        /// </summary>
         [TestMethod]
         public void TestFindWithBadId()
         {
@@ -43,6 +62,9 @@ namespace PayrollTesting
             Assert.AreEqual(expected, worker, "Values are not equal");
         }
 
+        /// <summary>
+        /// Should pass a VALID ID into CalculatePay and it should return the correct pay amount.
+        /// </summary>
         [TestMethod]
         public void TestCalculatePay()
         {
@@ -74,5 +96,6 @@ namespace PayrollTesting
 
             return department;
         }
+        #endregion
     }
 }

@@ -28,6 +28,7 @@ namespace Payroll
     [DataContract]
     public class Department
     {
+        #region Auto-Implemented Properties
         [DataMember(Name = "name")]
         public string Name { get; set; }
 
@@ -36,7 +37,12 @@ namespace Payroll
 
         [DataMember(Name = "shifts")]
         public List<Shift> Shifts { get; set; }
+        #endregion
 
+        #region Methods
+        /// <summary>
+        /// Default constructor. Sets the values of each member variable to a default value.
+        /// </summary>
         public Department()
         {
             Name = string.Empty;
@@ -44,14 +50,19 @@ namespace Payroll
             Shifts = new List<Shift>();
         }
 
+        /// <summary>
+        ///  Takes a worker’s id as a parameter. 
+        ///  It should return the Worker with the given id. 
+        ///  If it is not found then return null.
+        /// </summary>
+        /// <param name="workerId"></param>
+        /// <returns></returns>
         public Worker FindWorker(int workerId)
         {
             for (int i = 0; i < Workers.Count; i++)
             {
                 if (Workers[i].Id == workerId)
                 {
-                    //Worker result = Workers.Find(x => x.Id == workerId);
-                    //string workerData = Workers[i].ToString();
                     return Workers[i];
                 }
             }
@@ -59,12 +70,18 @@ namespace Payroll
             return null;
         }
 
+        /// <summary>
+        /// This method calculates a worker’s pay.
+        /// The worker’s pay is the total hours worked for all of their shifts times their pay rate.
+        /// </summary>
+        /// <param name="workerId"></param>
+        /// <returns></returns>
         public double CalculatePay(int workerId)
         {
             double totalPay = 0.0;
             double totalHours = 0.0;
 
-           Worker worker = FindWorker(workerId);
+            Worker worker = FindWorker(workerId);
 
             int index;
             for (index = 0; index < Shifts.Count; index++)
@@ -72,15 +89,20 @@ namespace Payroll
                 if (Shifts[index].WorkerID == workerId)
                 {
                     totalHours += Shifts[index].HoursWorked;
-
                 }
             }
-            
+
             totalPay = worker.PayRate * totalHours;
 
             return totalPay;
         }
 
+        /// <summary>
+        /// This method should return a string that contains data for all member variables. 
+        /// This means that the department name as well as all data in each collection 
+        /// should be part of the string that is returned.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string departmentString = "";
@@ -98,5 +120,6 @@ namespace Payroll
 
             return departmentString;
         }
+        #endregion
     }
 }
