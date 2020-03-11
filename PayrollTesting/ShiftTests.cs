@@ -33,12 +33,12 @@ namespace PayrollTesting
         [TestMethod]
         public void TestWorkerId()
         {
-            const string expected = "100";
+            int expected = 100;
 
             var shift = new Shift();
             shift.WorkerID = expected;
 
-            string actual = shift.WorkerID;
+            int actual = shift.WorkerID;
             Assert.AreEqual(expected, actual, "Values are not equal");
         }
 
