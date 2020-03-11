@@ -47,8 +47,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepartmentTests.cs" />
     <Compile Include="ShiftTests.cs" />
     <Compile Include="WorkerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
