@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -59,15 +60,23 @@ namespace Payroll
         /// <returns></returns>
         public Worker FindWorker(int workerId)
         {
-            for (int i = 0; i < Workers.Count; i++)
-            {
-                if (Workers[i].Id == workerId)
-                {
-                    return Workers[i];
-                }
-            }
+            var worker = Workers.FirstOrDefault(w => w.Id == workerId);
+            if (worker == null)
+                return null;
 
-            return null;
+            return worker;
+        }
+
+        /// <summary>
+        /// Finds all workers with the workerId.
+        /// </summary>
+        /// <param name="workerId"></param>
+        /// <returns></returns>
+        public IEnumerable<Worker> FindWorkers(int workerId)
+        {
+            var workers = Workers.Where(w => w.Id == workerId);
+
+            return workers;
         }
 
         /// <summary>
