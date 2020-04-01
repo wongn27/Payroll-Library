@@ -16,6 +16,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Payroll;
 using System.Runtime.Serialization.Json;
 using System.IO;
+using System.Linq;
 
 namespace PayrollTesting
 {
@@ -23,6 +24,19 @@ namespace PayrollTesting
     public class DepartmentTests
     {
         #region Test Methods
+
+        [TestMethod]
+        public void TestFindWorkers()
+        {
+            string fileName = "dept.json";
+            var department = DeserializeDepartmentJSON(fileName);
+
+            var testId = 100;
+
+            var workers = department.FindWorkers(testId);
+            Assert.IsTrue(workers.Count() > 0, "expects at least 1 worker with that test id");
+        }
+
         /// <summary>
         /// Should pass a VALID ID into Find and it should return a worker instance with the target id.
         /// </summary>
@@ -30,11 +44,7 @@ namespace PayrollTesting
         public void TestFindWithGoodId()
         {
             string fileName = "dept.json";
-
-            var department = new Department();
-
-            department = DeserializeDepartmentJSON(fileName);
-
+            var department = DeserializeDepartmentJSON(fileName);
 
             int expected = 100;
             Worker worker = department.FindWorker(expected);
@@ -50,10 +60,7 @@ namespace PayrollTesting
         public void TestFindWithBadId()
         {
             string fileName = "dept.json";
-
-            var department = new Department();
-
-            department = DeserializeDepartmentJSON(fileName);
+            var department = DeserializeDepartmentJSON(fileName);
 
             Worker expected = null;
             Worker worker = department.FindWorker(3000);
@@ -69,10 +76,7 @@ namespace PayrollTesting
         public void TestCalculatePay()
         {
             string fileName = "dept.json";
-
-            var department = new Department();
-
-            department = DeserializeDepartmentJSON(fileName);
+            var department = DeserializeDepartmentJSON(fileName);
 
             double expected = 1300;
             double totalPay = department.CalculatePay(100);
