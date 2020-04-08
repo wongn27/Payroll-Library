@@ -129,6 +129,18 @@ namespace Payroll
 
             return departmentString;
         }
+
+        public double CalculateTotalHoursWorked()
+        {
+            double totalHours = 0.0;
+
+            foreach (Shift shift in Shifts)
+            {
+                totalHours += shift.HoursWorked;
+            }
+
+            return totalHours;
+        }
         #endregion
     }
 }
