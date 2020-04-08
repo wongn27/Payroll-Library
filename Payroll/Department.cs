@@ -141,6 +141,20 @@ namespace Payroll
 
             return totalHours;
         }
+
+        public double CalculateTotalPay()
+        {
+            double totalPay = 0.0;
+
+            foreach (Worker worker in Workers)
+            {
+                int workerId = worker.Id;
+                double pay = CalculatePay(workerId);
+                totalPay += pay;
+            }
+
+            return totalPay;
+        }
         #endregion
     }
 }
