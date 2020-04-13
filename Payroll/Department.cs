@@ -155,6 +155,21 @@ namespace Payroll
 
             return totalPay;
         }
+
+        public double CalculateTotalWorkerHours(int workerId)
+        {
+            double totalHoursWorked = 0.0;
+
+            foreach (Shift shift in Shifts)
+            {
+                if (shift.WorkerID == workerId)
+                {
+                    totalHoursWorked += shift.HoursWorked;
+                }
+            }
+
+            return totalHoursWorked;
+        }
         #endregion
     }
 }
