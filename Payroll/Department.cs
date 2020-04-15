@@ -8,9 +8,15 @@
 //          properties for each member variable,
 //          contains a method to find a worker,
 //          contains a method to calculate pay,
-//          and contains a method that returns a 
+//          contains a method that returns a 
 //          string that contains descriptive text 
-//          and data for all member variables.
+//          and data for all member variables, 
+//          contains a method to calculate the total 
+//          hours of all the workers combined, contains 
+//          a method to calculate the total pay of all 
+//          the workers combined, and a method to 
+//          calculate total worker hours for certain 
+//          worker Id.
 //
 // Written By: Natalie Wong
 //
@@ -130,6 +136,10 @@ namespace Payroll
             return departmentString;
         }
 
+        /// <summary>
+        /// Calculates the total hours of all the workers combined.
+        /// </summary>
+        /// <returns></returns>
         public double CalculateTotalHoursWorked()
         {
             double totalHours = 0.0;
@@ -142,6 +152,10 @@ namespace Payroll
             return totalHours;
         }
 
+        /// <summary>
+        /// Calculates the total pay of all the workers combined.
+        /// </summary>
+        /// <returns></returns>
         public double CalculateTotalPay()
         {
             double totalPay = 0.0;
@@ -156,6 +170,11 @@ namespace Payroll
             return totalPay;
         }
 
+        /// <summary>
+        /// Calculates total worker hours for certain worker Id.
+        /// </summary>
+        /// <param name="workerId"></param>
+        /// <returns></returns>
         public double CalculateTotalWorkerHours(int workerId)
         {
             double totalHoursWorked = 0.0;
